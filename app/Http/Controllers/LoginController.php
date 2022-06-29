@@ -22,7 +22,7 @@ class LoginController extends Controller
 
         $remember = $req->input('remember');
         $response = [];
-        $response = Http::post('http://localhost:3000/api/v1/Auth/login', [
+        $response = Http::post('https://apigt.khgm-dev.com/api/v1/Auth/login', [
             'username' => $user,
             'password' => $pass ,
         ]);

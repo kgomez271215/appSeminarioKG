@@ -15,7 +15,7 @@ class AdministracionController extends Controller
 
     public function empresas()
     {
-        $response = Http::get('http://localhost:3000/api/v1/Empresas');
+        $response = Http::get('https://apigt.khgm-dev.com/api/v1/Empresas');
         $empresas = json_decode($response);
         return view('Administracion.empresas', compact('empresas'));
     }
@@ -51,7 +51,7 @@ class AdministracionController extends Controller
             ];
         }
 
-        $response = Http::post('http://localhost:3000/api/v1/Empresas', $datos);
+        $response = Http::post('https://apigt.khgm-dev.com/api/v1/Empresas', $datos);
         if ($response->status() == 201) {
             return redirect()->back()->with('success', 'Registro creado correctamente');
         } else {
@@ -69,7 +69,7 @@ class AdministracionController extends Controller
             $estado = true;
             $msg = 'Registro dado de alta correctamente';
         }
-        $response = Http::patch('http://localhost:3000/api/v1/Empresas/' . $req->input('idEmpresa'), [
+        $response = Http::patch('https://apigt.khgm-dev.com/api/v1/Empresas/' . $req->input('idEmpresa'), [
             "estado" => $estado
         ]);
 
@@ -115,7 +115,7 @@ class AdministracionController extends Controller
             return redirect()->back()->with('error', 'El campo nombre empresa y descripcion no pueden estar  vacios');
         }
 
-        $response = Http::patch('http://localhost:3000/api/v1/Empresas/' . $req->input('idEmpresa'), $datos);
+        $response = Http::patch('https://apigt.khgm-dev.com/api/v1/Empresas/' . $req->input('idEmpresa'), $datos);
         if ($response->status() == 200) {
             return redirect()->back()->with('success', 'Registro actualizado correctamente');
         } else {
@@ -125,7 +125,7 @@ class AdministracionController extends Controller
 
     public function tipoSedes()
     {
-        $response = Http::get('http://localhost:3000/api/v1/TipoSedes');
+        $response = Http::get('https://apigt.khgm-dev.com/api/v1/TipoSedes');
         $tipoSedes = json_decode($response);
         //dd($tipoSedes);
         return view('Administracion.tipoSedes', compact('tipoSedes'));
@@ -150,7 +150,7 @@ class AdministracionController extends Controller
             return redirect()->back()->with('error', 'El campo tipo de sede no puede estar  vacio');
         }
 
-        $response = Http::post('http://localhost:3000/api/v1/TipoSedes', $datos);
+        $response = Http::post('https://apigt.khgm-dev.com/api/v1/TipoSedes', $datos);
         if ($response->status() == 201) {
             return redirect()->back()->with('success', 'Registro creado correctamente');
         } else {
@@ -168,7 +168,7 @@ class AdministracionController extends Controller
             $estado = true;
             $msg = 'Registro dado de alta correctamente';
         }
-        $response = Http::patch('http://localhost:3000/api/v1/TipoSedes/' . $req->input('idTipoSede'), [
+        $response = Http::patch('https://apigt.khgm-dev.com/api/v1/TipoSedes/' . $req->input('idTipoSede'), [
             "estado" => $estado
         ]);
 
@@ -198,7 +198,7 @@ class AdministracionController extends Controller
             return redirect()->back()->with('error', 'El campo tipo de sede no puede estar  vacio');
         }
 
-        $response = Http::patch('http://localhost:3000/api/v1/TipoSedes/' . $req->input('idTipoSede'), $datos);
+        $response = Http::patch('https://apigt.khgm-dev.com/api/v1/TipoSedes/' . $req->input('idTipoSede'), $datos);
         if ($response->status() == 200) {
             return redirect()->back()->with('success', 'Registro actualizado correctamente');
         } else {
@@ -208,10 +208,10 @@ class AdministracionController extends Controller
 
     public function sedes()
     {
-        $response = Http::get('http://localhost:3000/api/v1/Sedes/' . session('empresa'));
+        $response = Http::get('https://apigt.khgm-dev.com/api/v1/Sedes/' . session('empresa'));
         $sedes = json_decode($response);
 
-        $response = Http::get('http://localhost:3000/api/v1/TipoSedes');
+        $response = Http::get('https://apigt.khgm-dev.com/api/v1/TipoSedes');
         $tipoSedes = json_decode($response);
         //dd($tipoSedes);
         return view('Administracion.sedes', compact('sedes', 'tipoSedes'));
@@ -230,7 +230,7 @@ class AdministracionController extends Controller
             ];
         }
 
-        $response = Http::post('http://localhost:3000/api/v1/Sedes', $datos);
+        $response = Http::post('https://apigt.khgm-dev.com/api/v1/Sedes', $datos);
         if ($response->status() == 201) {
             return redirect()->back()->with('success', 'Registro creado correctamente');
         } else {
@@ -247,7 +247,7 @@ class AdministracionController extends Controller
             $estado = true;
             $msg = 'Registro dado de alta correctamente';
         }
-        $response = Http::patch('http://localhost:3000/api/v1/Sedes/' . $req->input('idSede'), [
+        $response = Http::patch('https://apigt.khgm-dev.com/api/v1/Sedes/' . $req->input('idSede'), [
             "estado" => $estado
         ]);
 
@@ -270,7 +270,7 @@ class AdministracionController extends Controller
             ];
         }
 
-        $response = Http::patch('http://localhost:3000/api/v1/Sedes/' . $req->input('idSede'), $datos);
+        $response = Http::patch('https://apigt.khgm-dev.com/api/v1/Sedes/' . $req->input('idSede'), $datos);
         if ($response->status() == 200) {
             return redirect()->back()->with('success', 'Registro actualizado correctamente');
         } else {
@@ -281,11 +281,11 @@ class AdministracionController extends Controller
     public function usuarios(Request $req)
     {
         if(session('empresa')==1){
-            $response = Http::get('http://localhost:3000/api/v1/Users');
+            $response = Http::get('https://apigt.khgm-dev.com/api/v1/Users');
         }
 
         if(session('empresa')>1){
-            $response = Http::get('http://localhost:3000/api/v1/Users/Admin',[
+            $response = Http::get('https://apigt.khgm-dev.com/api/v1/Users/Admin',[
                 "idEmpresa"=>session('empresa')
             ]);
         }

@@ -28,7 +28,7 @@ $('.btnDelete').on('click', function () {
 $('.btnUpdate').on('click', function () {
     let id = $(this).val();
     var laravelToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    axios.get('http://localhost:3000/api/v1/Empresas/'+id)
+    axios.get('https://apigt.khgm-dev.com/api/v1/Empresas/'+id)
         .then(function (response) {
             $('#modalEditEmpresa #idEmpresa').val(response.data.idEmpresa);
             $('#modalEditEmpresa #empresa').val(response.data.empresa);
@@ -78,7 +78,7 @@ $('.btnDeleteTipoSede').on('click', function () {
 $('.btnUpdateTipoSede').on('click', function () {
     let id = $(this).val();
     var laravelToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    axios.get('http://localhost:3000/api/v1/TipoSedes/'+id)
+    axios.get('https://apigt.khgm-dev.com/api/v1/TipoSedes/'+id)
         .then(function (response) {
             $('#modalEditTipoSede #idTipoSede').val(response.data.idTipoSede);
             $('#modalEditTipoSede #tipoSede').val(response.data.tipoSede);
@@ -127,7 +127,7 @@ $('.btnDeleteSede').on('click', function () {
 $('.btnUpdateSede').on('click', function () {
     let id = $(this).val();
     var laravelToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    axios.get('http://localhost:3000/api/v1/Sedes/edit/'+id)
+    axios.get('https://apigt.khgm-dev.com/api/v1/Sedes/edit/'+id)
         .then(function (response) {
             $('#modalEditSede #idSede').val(response.data.idSede);
             $('#modalEditSede #sede').val(response.data.sede);
